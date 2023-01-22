@@ -26,16 +26,34 @@ class CarsService {
   public async register(carData: ICar) {
     const carODM = new CarODM();
     const newCar = await carODM.create(carData) as ICar;
-    console.log(newCar);
+    // console.log(newCar);
     return this.createCarDomain(newCar);
     // return this.createKeyDomain(newCar);
   }
 
-  // public async getByValue(value: string) {
-  //   const carODM = new CarODM();
-  //   const key = await carODM.findByValue(value);
-  //   return this.createKeyDomain(key);
-  // }
+  public async findAll() {
+    const carODM = new CarODM();
+    const odmCars = await carODM.findAll();
+
+    if (odmCars) {
+      const allCars = await Promise.all(odmCars.map((car) => this.createCarDomain(car)));
+      return allCars;
+    }
+    return null;
+  }
+
+  // await Promise.allSettled(order.productsIds.map(async (product) => {
+  //   await model.updateProduct(insertId, product);
+  // }));
+
+  public async findById(id: string) {
+    const carODM = new CarODM();
+    const car = await carODM.findById(id);
+    // if (!car) return { code: 404, message: 'Car not found' };
+    // console.log(car);
+    return this.createCarDomain(car);
+    // return { message: 'FUNCIONA' };
+  }
 }
 
 export default CarsService;

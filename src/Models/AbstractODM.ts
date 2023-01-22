@@ -31,6 +31,14 @@ abstract class AbstractODM<T> {
       { new: true },
     );
   }
+
+  public async findAll(): Promise<T[] | null> {
+    return this.model.find({}, { __v: 0 });
+  }
+
+  public async findById(id: string): Promise<T | null> {
+    return this.model.findOne({ _id: id });
+  }
 }
 
 export default AbstractODM;

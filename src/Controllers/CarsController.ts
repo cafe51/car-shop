@@ -6,19 +6,19 @@ import {
 
 import ICar from '../Interfaces/ICar';
 
-import CarsService from '../Services/CarService';
+import CarService from '../Services/CarService';
 
 class CarsController {
   // private req: Request;
   // private res: Response;
   // private next: NextFunction;
-  private service: CarsService;
+  private service: CarService;
 
   constructor(/* req: Request, res: Response, next: NextFunction */) {
     // this.req = req;
     // this.res = res;
     // this.next = next;
-    this.service = new CarsService();
+    this.service = new CarService();
   }
 
   create = async (req: Request, res: Response, next: NextFunction) => {
@@ -42,15 +42,6 @@ class CarsController {
       seatsQty,
     };
 
-    // id?: string;
-    // model: string;
-    // year: number;
-    // color: string;
-    // status?: boolean;
-    // buyValue: number;
-    // doorsQty: number;
-    // seatsQty: number;
-
     try {
       const newCar = await this.service.register(car);
       return res.status(201).json(newCar);
@@ -59,11 +50,32 @@ class CarsController {
     }
   };
 
-  // public async getByValue() {
-  //   const { value } = this.req.params;
-  //   const key = await this.service.getByValue(value);
-  //   return this.res.status(200).json(key);
-  // }
+  findAll = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const allCars = await this.service.findAll();
+      return res.status(200).json(allCars);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  findById = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      if (id.length !== 24) {
+        return res.status(422).json({ message: 'Invalid mongo id' });
+      }
+
+      const car = await this.service.findById(id);
+      if (!car) {
+        return res.status(404).json({ message: 'Car not found' });
+      }
+
+      return res.status(200).json(car);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default CarsController;
