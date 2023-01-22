@@ -52,6 +52,8 @@ class CarsController {
 
   findAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const { string } = req.params;
+      console.log(string);
       const allCars = await this.service.findAll();
       return res.status(200).json(allCars);
     } catch (error) {

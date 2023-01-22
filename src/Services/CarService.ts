@@ -26,9 +26,7 @@ class CarsService {
   public async register(carData: ICar) {
     const carODM = new CarODM();
     const newCar = await carODM.create(carData) as ICar;
-    // console.log(newCar);
     return this.createCarDomain(newCar);
-    // return this.createKeyDomain(newCar);
   }
 
   public async findAll() {
