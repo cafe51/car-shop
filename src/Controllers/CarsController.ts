@@ -4,7 +4,7 @@ import {
   Response,
 } from 'express';
 
-import ICar from '../Interfaces/ICar';
+// import ICar from '../Interfaces/ICar';
 
 import CarService from '../Services/CarService';
 
@@ -22,29 +22,30 @@ class CarsController {
   }
 
   create = async (req: Request, res: Response, next: NextFunction) => {
-    const {
-      model,
-      year,
-      color,
-      status,
-      buyValue,
-      doorsQty,
-      seatsQty,
-    } = req.body;
+    // const {
+    //   model,
+    //   year,
+    //   color,
+    //   status,
+    //   buyValue,
+    //   doorsQty,
+    //   seatsQty,
+    // } = req.body;
 
-    const car: ICar = {
-      model,
-      year,
-      color,
-      status,
-      buyValue,
-      doorsQty,
-      seatsQty,
-    };
+    // const car: ICar = {
+    //   model,
+    //   year,
+    //   color,
+    //   status,
+    //   buyValue,
+    //   doorsQty,
+    //   seatsQty,
+    // };
 
     try {
-      const newCar = await this.service.register(car);
-      return res.status(201).json(newCar);
+      // console.log(req.body);
+      const newVehicle = await this.service.register(req.params.string, req.body);
+      return res.status(201).json(newVehicle);
     } catch (error) {
       next(error);
     }
@@ -52,10 +53,10 @@ class CarsController {
 
   findAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { string } = req.params;
-      console.log(string);
-      const allCars = await this.service.findAll();
-      return res.status(200).json(allCars);
+      // const { string } = req.params;
+      // console.log(string);
+      const allVehicles = await this.service.findAll(req.params.string);
+      return res.status(200).json(allVehicles);
     } catch (error) {
       next(error);
     }
@@ -63,12 +64,13 @@ class CarsController {
 
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const { string } = req.params;
       const { id } = req.params;
       if (id.length !== 24) {
         return res.status(422).json({ message: 'Invalid mongo id' });
       }
 
-      const car = await this.service.findById(id);
+      const car = await this.service.findById(string, id);
       if (!car) {
         return res.status(404).json({ message: 'Car not found' });
       }

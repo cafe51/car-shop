@@ -1,56 +1,33 @@
 // import Key from '../Domain/Key/Key';
 // import KeyFactory from '../Domain/Key/KeyFactory';
-import Car from '../Domains/Car';
+// import Car from '../Domains/Car';
+import VehicleDomainFactory from './VehicleDomainFactory';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 
 class CarsService {
-  private createCarDomain(carData: ICar | null): Car | null {
-    if (carData) {
-      const car: ICar = {
-        id: carData.id,
-        model: carData.model,
-        year: carData.year,
-        color: carData.color,
-        status: carData.status,
-        buyValue: carData.buyValue,
-        doorsQty: carData.doorsQty,
-        seatsQty: carData.seatsQty,
-      };
-      return new Car(car);
-    }
-  
-    return null;
-  }
-
-  public async register(carData: ICar) {
+  public async register(type: string, carData: ICar) {
     const carODM = new CarODM();
     const newCar = await carODM.create(carData) as ICar;
-    return this.createCarDomain(newCar);
+    return VehicleDomainFactory.createVehicleDomain(type, newCar);
   }
 
-  public async findAll() {
+  public async findAll(type: string) {
     const carODM = new CarODM();
     const odmCars = await carODM.findAll();
 
     if (odmCars) {
-      const allCars = await Promise.all(odmCars.map((car) => this.createCarDomain(car)));
+      const allCars = await Promise
+        .all(odmCars.map((car) => VehicleDomainFactory.createVehicleDomain(type, car)));
       return allCars;
     }
     return null;
   }
 
-  // await Promise.allSettled(order.productsIds.map(async (product) => {
-  //   await model.updateProduct(insertId, product);
-  // }));
-
-  public async findById(id: string) {
+  public async findById(type: string, id: string) {
     const carODM = new CarODM();
     const car = await carODM.findById(id);
-    // if (!car) return { code: 404, message: 'Car not found' };
-    // console.log(car);
-    return this.createCarDomain(car);
-    // return { message: 'FUNCIONA' };
+    return VehicleDomainFactory.createVehicleDomain(type, car);
   }
 }
 
