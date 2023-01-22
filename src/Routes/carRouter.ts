@@ -1,14 +1,14 @@
 import * as express from 'express';
-import CarsController from '../Controllers/CarsController';
+import VehicleController from '../Controllers/VehicleController';
 
 const carsRouter = express.Router();
 
-const carsController: CarsController = new CarsController();
+const vehicleController: VehicleController = new VehicleController();
 
-carsRouter.post('/:string/', carsController.create);
+carsRouter.post('/:string/', vehicleController.create);
 
-carsRouter.get('/:string/', carsController.findAll);
+carsRouter.get('/:string/', vehicleController.findAll);
 
-carsRouter.get('/:string/:id', carsController.findById);
+carsRouter.get('/:string/:id', vehicleController.findById);
 
 export default carsRouter;

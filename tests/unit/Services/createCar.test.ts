@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { Model } from 'mongoose';
 import Car from '../../../src/Domains/Car';
 import ICar from '../../../src/Interfaces/ICar';
-import CarService from '../../../src/Services/CarService';
+import VehicleService from '../../../src/Services/VehicleService';
 
 // const RESULT_ERROR = 'Invalid Key';
 
@@ -30,8 +30,8 @@ describe('Deveria criar carros', function () {
     });
     sinon.stub(Model, 'create').resolves(carOutput);
 
-    const service = new CarService();
-    const result = await service.register('cars', carInput);
+    const service = new VehicleService('cars');
+    const result = await service.register(carInput);
 
     expect(result).to.be.deep.equal(carOutput);
   });

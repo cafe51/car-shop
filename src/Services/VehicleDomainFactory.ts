@@ -43,6 +43,9 @@ class VehicleDomainFactory {
     if (type === 'cars') {
       return this.createCarDomain(vehicleData);
     }
+    if (type === 'motorcycles') {
+      return this.createMotorcycleDomain(vehicleData);
+    }
   }
 }
 
