@@ -11,4 +11,6 @@ carsRouter.get('/:string/', vehicleController.findAll);
 
 carsRouter.get('/:string/:id', vehicleController.findById);
 
+carsRouter.put('/:string/:id', vehicleController.update);
+
 export default carsRouter;

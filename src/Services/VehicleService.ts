@@ -39,6 +39,14 @@ class VehicleService {
     const vehicle = await vehicleODM.findById(id);
     return VehicleDomainFactory.createVehicleDomain(this.type, vehicle);
   }
+
+  async update(id: string, newData: any) {
+    const vehicleODM = this.vehicleFactoryODM.generateODM();
+    if (!vehicleODM) return null;
+    
+    const updatedVehicle = await vehicleODM.update(id, newData);
+    return VehicleDomainFactory.createVehicleDomain(this.type, updatedVehicle);
+  }
 }
 
 export default VehicleService;

@@ -48,6 +48,24 @@ class VehicleController {
       next(error);
     }
   };
+
+  update = async (req: Request, res: Response, next: NextFunction) => {
+    const { string, id } = req.params;
+    if (id.length !== 24) {
+      return res.status(422).json({ message: 'Invalid mongo id' });
+    }
+    const { body } = req;
+    try {
+      const updatedVehicle = await new VehicleService(string).update(id, body);
+      if (!updatedVehicle) {
+        return res.status(404)
+          .json({ message: `${string.charAt(0).toUpperCase() + string.slice(1, -1)} not found` });
+      }
+      return res.status(200).json(updatedVehicle);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default VehicleController;
