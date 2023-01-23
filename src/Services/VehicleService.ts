@@ -1,13 +1,9 @@
 import VehicleDomainFactory from './VehicleDomainFactory';
 import VehicleFactoryODM from '../Models/VehicleFactoryODM';
 import IVehicle from '../Interfaces/IVehicle';
-// import ICar from '../Interfaces/ICar';
-// import CarODM from '../Models/CarODM';
 
 class VehicleService {
   vehicleFactoryODM: VehicleFactoryODM;
-  // type: string;
-
   constructor(public type: string) {
     this.type = type;
     this.vehicleFactoryODM = new VehicleFactoryODM(type);
@@ -47,6 +43,13 @@ class VehicleService {
     
     const updatedVehicle = await vehicleODM.update(id, newData);
     return VehicleDomainFactory.createVehicleDomain(this.type, updatedVehicle);
+  }
+
+  async deleteById(id: string) {
+    const vehicleODM = this.vehicleFactoryODM.generateODM();
+    if (!vehicleODM) return null;
+    
+    await vehicleODM.deleteById(id);
   }
 }
 

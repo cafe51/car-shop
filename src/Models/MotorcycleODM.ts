@@ -16,14 +16,6 @@ class MotorcycleODM extends AbstractODM<IVehicle> {
     });
     super(schema, 'Motorcycles');
   }
-
-  // public async findAll(): Promise<IMotorcycle[] | null> {
-  //   return this.model.find();
-  // }
-
-  // public async findByValue(value: string): Promise<IMotorcycle | null> {
-  //   return this.model.findOne({ value });
-  // }
 }
 
 export default MotorcycleODM;

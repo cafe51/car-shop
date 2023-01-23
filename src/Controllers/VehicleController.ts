@@ -9,10 +9,18 @@ import {
 import VehicleService from '../Services/VehicleService';
 
 class VehicleController {
+  ID_NOT_FOUND = 'Invalid mongo id';
+
+  vehicleNotFoundMessage = (vehicleName: string) => 
+    ({
+      message: `${vehicleName
+        .charAt(0)
+        .toUpperCase() + vehicleName.slice(1, -1)} not found`,
+    }); 
+
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      // console.log(req.body);
-      const newVehicle = await new VehicleService(req.params.string)
+      const newVehicle = await new VehicleService(req.params.vehicleType)
         .register(req.body);
       return res.status(201).json(newVehicle);
     } catch (error) {
@@ -22,7 +30,7 @@ class VehicleController {
 
   findAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const allVehicles = await new VehicleService(req.params.string).findAll();
+      const allVehicles = await new VehicleService(req.params.vehicleType).findAll();
       return res.status(200).json(allVehicles);
     } catch (error) {
       next(error);
@@ -31,16 +39,15 @@ class VehicleController {
 
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { string } = req.params;
-      const { id } = req.params;
+      const { vehicleType, id } = req.params;
       if (id.length !== 24) {
-        return res.status(422).json({ message: 'Invalid mongo id' });
+        return res.status(422).json({ message: this.ID_NOT_FOUND });
       }
 
-      const car = await new VehicleService(req.params.string).findById(id);
+      const car = await new VehicleService(vehicleType).findById(id);
       if (!car) {
         return res.status(404)
-          .json({ message: `${string.charAt(0).toUpperCase() + string.slice(1, -1)} not found` });
+          .json(this.vehicleNotFoundMessage(vehicleType));
       }
 
       return res.status(200).json(car);
@@ -50,18 +57,36 @@ class VehicleController {
   };
 
   update = async (req: Request, res: Response, next: NextFunction) => {
-    const { string, id } = req.params;
+    const { vehicleType, id } = req.params;
     if (id.length !== 24) {
-      return res.status(422).json({ message: 'Invalid mongo id' });
+      return res.status(422).json({ message: this.ID_NOT_FOUND });
     }
     const { body } = req;
     try {
-      const updatedVehicle = await new VehicleService(string).update(id, body);
+      const updatedVehicle = await new VehicleService(vehicleType).update(id, body);
       if (!updatedVehicle) {
         return res.status(404)
-          .json({ message: `${string.charAt(0).toUpperCase() + string.slice(1, -1)} not found` });
+          .json(this.vehicleNotFoundMessage(vehicleType));
       }
       return res.status(200).json(updatedVehicle);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  deleteById = async (req: Request, res: Response, next: NextFunction) => {
+    const { vehicleType, id } = req.params;
+    if (id.length !== 24) {
+      return res.status(422).json({ message: this.ID_NOT_FOUND });
+    }
+    try {
+      const deletedVehicle = await new VehicleService(vehicleType).findById(id);
+      if (!deletedVehicle) {
+        return res.status(404)
+          .json(this.vehicleNotFoundMessage(vehicleType));
+      }
+      await new VehicleService(vehicleType).deleteById(id);
+      return res.status(204).json();
     } catch (error) {
       next(error);
     }

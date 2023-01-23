@@ -5,12 +5,14 @@ const vehicleRouter = express.Router();
 
 const vehicleController: VehicleController = new VehicleController();
 
-vehicleRouter.post('/:string/', vehicleController.create);
+vehicleRouter.post('/:vehicleType/', vehicleController.create);
 
-vehicleRouter.get('/:string/', vehicleController.findAll);
+vehicleRouter.get('/:vehicleType/', vehicleController.findAll);
 
-vehicleRouter.get('/:string/:id', vehicleController.findById);
+vehicleRouter.get('/:vehicleType/:id', vehicleController.findById);
 
-vehicleRouter.put('/:string/:id', vehicleController.update);
+vehicleRouter.put('/:vehicleType/:id', vehicleController.update);
+
+vehicleRouter.delete('/vehicleType/:id', vehicleController.deleteById);
 
 export default vehicleRouter;
