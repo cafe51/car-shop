@@ -1,5 +1,6 @@
 import VehicleDomainFactory from './VehicleDomainFactory';
 import VehicleFactoryODM from '../Models/VehicleFactoryODM';
+import IVehicle from '../Interfaces/IVehicle';
 // import ICar from '../Interfaces/ICar';
 // import CarODM from '../Models/CarODM';
 
@@ -12,7 +13,7 @@ class VehicleService {
     this.vehicleFactoryODM = new VehicleFactoryODM(type);
   }
 
-  public async register(carData: any) {
+  public async register(carData: IVehicle) {
     const vehicleODM = this.vehicleFactoryODM.generateODM();
     if (!vehicleODM) return null;
     
@@ -40,7 +41,7 @@ class VehicleService {
     return VehicleDomainFactory.createVehicleDomain(this.type, vehicle);
   }
 
-  async update(id: string, newData: any) {
+  async update(id: string, newData: IVehicle) {
     const vehicleODM = this.vehicleFactoryODM.generateODM();
     if (!vehicleODM) return null;
     
