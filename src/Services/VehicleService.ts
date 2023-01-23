@@ -5,9 +5,9 @@ import VehicleFactoryODM from '../Models/VehicleFactoryODM';
 
 class VehicleService {
   vehicleFactoryODM: VehicleFactoryODM;
-  type: string;
+  // type: string;
 
-  constructor(type: string) {
+  constructor(public type: string) {
     this.type = type;
     this.vehicleFactoryODM = new VehicleFactoryODM(type);
   }
