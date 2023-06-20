@@ -8,7 +8,7 @@ services:
     # Nome do container para facilitar execução
     container_name: car_shop
     # Caminho da Dockerfile
-    build: ./ 
+    # build: ./ 
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
