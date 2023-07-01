@@ -2,7 +2,7 @@
 
 ## Introdução
 
-O projeto consiste em construir uma API com CRUD para gerenciar uma concessionária de veículos utilizando Node.Js com MongoDB e aplicando os princípios da Programação Orientada a Objetos(POO)
+Nesse projeto eu construí uma API com CRUD para gerenciar uma concessionária de veículos utilizando Node.Js com MongoDB e aplicando os princípios da Programação Orientada a Objetos(POO). A api está online, basta acessar https://car-shop-japhe.up.railway.app/
 
 ## Sumário
 
@@ -56,18 +56,22 @@ Aprimorei minha capacidade de trabalhar com MongoDB usando o mongoose, um ODM po
 
 ## Instruções para utilizar a aplicação
 
-Para utilizar a aplicação você precisará ter o [Docker](https://docs.docker.com/engine/install/ubuntu/) instalado.
+A api está online, basta acessar https://car-shop-japhe.up.railway.app/
+
+Para utilizar a aplicação localmente você precisará ter o [Docker](https://docs.docker.com/engine/install/ubuntu/) instalado.
 
 Após clonar o repositório, você precisará usar o comando `docker-compose up -d` para criar e iniciar o container e depois executar o terminal bash do container e instalar as dependências do projeto com o comando `npm install` . O comando deverá ser feito via terminal no diretório em que está o arquivo **docker-compose.yml**.
 
 Após o container subir você poderá fazer as requisições utilizando um cliente HTTP (insomnia, postman, httpie e etc);
+
+E pronto! A API está agora pronta para ser usada localmente no endereço http://localhost:3001
 
 ## Documentação (endpoints)
 
 ### 🚗 Cars
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `POST` | Realiza o cadastro de um veiculo | http://localhost:3001/cars
+| `POST` | Realiza o cadastro de um veiculo | https://blog-api-japhe.up.railway.app/cars
 
 <details>
   <summary> A estrutura do body da requisição deverá seguir o padrão abaixo:  </summary>
@@ -116,7 +120,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma lista de carros cadastrados | http://localhost:3001/cars
+| `GET` | Retorna uma lista de carros cadastrados | https://blog-api-japhe.up.railway.app/cars
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -143,7 +147,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna um carro atravéz do id | http://localhost:3001/cars/:id
+| `GET` | Retorna um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -172,7 +176,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `PUT` | Atualizar um carro atravéz do id | http://localhost:3001/cars/:id
+| `PUT` | Atualizar um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -202,7 +206,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `DELETE` | Deletar um carro atravéz do id | http://localhost:3001/cars/:id
+| `DELETE` | Deletar um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
 
 * A resposta da requisição é 204 e sem body em caso de sucesso
 
@@ -219,7 +223,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `POST` | Realiza o cadastro de uma moto | http://localhost:3001/motorcycles
+| `POST` | Realiza o cadastro de uma moto | https://blog-api-japhe.up.railway.app/motorcycles
 
 <details>
   <summary> A estrutura do body da requisição deverá seguir o padrão abaixo:  </summary>
@@ -270,7 +274,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma lista de motos cadastradas | http://localhost:3001/motorcycles
+| `GET` | Retorna uma lista de motos cadastradas | https://blog-api-japhe.up.railway.app/motorcycles
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -297,7 +301,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma moto atravéz do id | http://localhost:3001/motorcycles/:id
+| `GET` | Retorna uma moto atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -326,7 +330,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `PUT` | Atualizar um carro atravéz do id | http://localhost:3001/motorcycles/:id
+| `PUT` | Atualizar um carro atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -356,7 +360,7 @@ Após o container subir você poderá fazer as requisições utilizando um clien
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `DELETE` | Deletar um carro atravéz do id | http://localhost:3001/motorcycles/:id
+| `DELETE` | Deletar um carro atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
 
 * A resposta da requisição é 204 e sem body em caso de sucesso
 

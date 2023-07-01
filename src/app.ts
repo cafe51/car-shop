@@ -8,7 +8,7 @@ const app = express();
 app.get('/', (req, res) => {
   res.status(200).json({
     instruções: 'A api está pronta para uso! Siga a documentação da api para conhecer os endpoints',
-    documentação: 'https://github.com/cafe51/car-shop',
+    documentação: 'https://github.com/cafe51/car-shop#documenta%C3%A7%C3%A3o-endpoints',
   });
 });
 
