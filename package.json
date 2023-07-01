@@ -4,6 +4,10 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
+    "prebuild": "rm -rf ./dist",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node dist/src/server.js",
     "dev": "tsnd src/server.ts",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest -i --verbose",
