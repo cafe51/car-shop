@@ -1,15 +1,11 @@
-FROM node:16.14
+FROM node:16-alpine
 
-WORKDIR /app
+WORKDIR /app/back
 
-COPY package*.json ./
+COPY package*.json .
 
-RUN ["npm", "i"] 
+# COPY . .
+
+RUN npm install --silent
 
 COPY . .
-
-RUN chown node:node /app
-
-USER node
-
-CMD ["npm", "run", "dev"]
