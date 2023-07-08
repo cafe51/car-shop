@@ -71,7 +71,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 ### 🚗 Cars
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `POST` | Realiza o cadastro de um veiculo | https://blog-api-japhe.up.railway.app/cars
+| `POST` | Realiza o cadastro de um veiculo | https://car-shop-japhe.up.railway.app/cars
 
 <details>
   <summary> A estrutura do body da requisição deverá seguir o padrão abaixo:  </summary>
@@ -120,7 +120,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma lista de carros cadastrados | https://blog-api-japhe.up.railway.app/cars
+| `GET` | Retorna uma lista de carros cadastrados | https://car-shop-japhe.up.railway.app/cars
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -147,7 +147,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
+| `GET` | Retorna um carro atravéz do id | https://car-shop-japhe.up.railway.app/cars/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -176,7 +176,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `PUT` | Atualizar um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
+| `PUT` | Atualizar um carro atravéz do id | https://car-shop-japhe.up.railway.app/cars/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -206,7 +206,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `DELETE` | Deletar um carro atravéz do id | https://blog-api-japhe.up.railway.app/cars/:id
+| `DELETE` | Deletar um carro atravéz do id | https://car-shop-japhe.up.railway.app/cars/:id
 
 * A resposta da requisição é 204 e sem body em caso de sucesso
 
@@ -223,7 +223,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `POST` | Realiza o cadastro de uma moto | https://blog-api-japhe.up.railway.app/motorcycles
+| `POST` | Realiza o cadastro de uma moto | https://car-shop-japhe.up.railway.app/motorcycles
 
 <details>
   <summary> A estrutura do body da requisição deverá seguir o padrão abaixo:  </summary>
@@ -274,7 +274,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma lista de motos cadastradas | https://blog-api-japhe.up.railway.app/motorcycles
+| `GET` | Retorna uma lista de motos cadastradas | https://car-shop-japhe.up.railway.app/motorcycles
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -301,7 +301,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `GET` | Retorna uma moto atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
+| `GET` | Retorna uma moto atravéz do id | https://car-shop-japhe.up.railway.app/motorcycles/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -330,7 +330,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `PUT` | Atualizar um carro atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
+| `PUT` | Atualizar um carro atravéz do id | https://car-shop-japhe.up.railway.app/motorcycles/:id
 
 <details>
   <summary> A resposta da requisição é a seguinte com status 200  </summary>
@@ -360,7 +360,7 @@ E pronto! A API está agora pronta para ser usada localmente no endereço http:/
 
 | Método | Funcionalidade | URL |
 |---|---|---|
-| `DELETE` | Deletar um carro atravéz do id | https://blog-api-japhe.up.railway.app/motorcycles/:id
+| `DELETE` | Deletar um carro atravéz do id | https://car-shop-japhe.up.railway.app/motorcycles/:id
 
 * A resposta da requisição é 204 e sem body em caso de sucesso
 
